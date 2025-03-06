@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여더쿠 대행 견적 계산기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+      .info-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+    </style>
+    <script>
+        function calculateTotal() {
+            const productPrice = parseFloat(document.getElementById("productPrice").value) || 0;
+            const purchaseFee = parseFloat(document.getElementById("purchaseFee").value) || 0;
+            const shippingFee = parseFloat(document.getElementById("shippingFee").value) || 0;
+            const sameDayShippingFee = parseFloat(document.getElementById("sameDayShippingFee").value) || 0;
+            
+            const total = productPrice + purchaseFee + shippingFee + sameDayShippingFee;
+
+            document.getElementById("total").innerText = "총 합: " + total.toLocaleString() + " 엔";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>여더쿠 대행 견적 계산기</h1>
+
+        <label for="productPrice">상품 가격:</label>
+        <input type="number" id="productPrice" placeholder="상품 가격 입력"><br>
+
+        <label for="purchaseFee">구매 수수료:</label>
+        <input type="number" id="purchaseFee" placeholder="구매 수수료 입력"><br>
+      <p class="info-text">플리마켓 2000엔 이상 링크별 100엔, 2000엔 미만 링크별 250엔</p>
+      <p class="info-text">일반사이트 링크별 100엔, 배송대행 신청서별 250엔</p>
+
+        <label for="shippingFee">합포장 수수료:</label>
+        <input type="number" id="shippingFee" placeholder="합포장 수수료 입력"><br>
+      <p class="info-text">소:200엔, 중:350엔, 대:500엔, 초대형:1000엔</p>
+
+        <label for="sameDayShippingFee">일내 배송비 및 기타수수료:</label>
+        <input type="number" id="sameDayShippingFee" placeholder="일내 배송비, 기타수수료 입력"><br>
+
+        <button onclick="calculateTotal()">예상 견적 계산</button>
+
+        <h2 id="total">예상 견적 : 0 엔</h2>
+    </div>
+</body>
+</html>
